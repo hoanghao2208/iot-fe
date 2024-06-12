@@ -18,10 +18,6 @@ export default function Header() {
                     <Link className="" to="/statistical/*">
                         Thống kê
                     </Link>
-
-                    <Link className="" to="/notification">
-                        Thông báo
-                    </Link>
                 </div>
             </div>
         </div>

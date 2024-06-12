@@ -1,7 +1,11 @@
-import { useEffect, React, useState } from "react";
+import React, { useEffect, useState, useCallback } from "react";
 import "./style.scss";
-import { Table } from "antd";
+import { notification, Table } from "antd";
 import axios from "axios";
+
+const Context = React.createContext({
+    name: "Default",
+});
 
 const initialParameterData = [
     {
@@ -17,6 +21,34 @@ export default function DataOverview() {
     const [parameterData, setParameterData] = useState(initialParameterData);
     const [firstValue, setFirstValue] = useState("0");
     const [firstValueAir, setFirstValueAir] = useState("0");
+
+    const [api, contextHolder] = notification.useNotification();
+    const [noti, setNoti] = useState("");
+
+    const handleGetNoti = useCallback(async () => {
+        const url =
+            "https://io.adafruit.com/api/v2/minhpham51/feeds/notification";
+        try {
+            const response = await axios.get(url);
+            setNoti(response.data.last_value);
+        } catch (error) {
+            console.error("Failed to fetch notification:", error);
+        }
+    }, []);
+
+    useEffect(() => {
+        handleGetNoti();
+    }, [handleGetNoti]);
+
+    useEffect(() => {
+        if (noti) {
+            api.info({
+                message: "Thông báo",
+                description: noti,
+                placement: "topRight",
+            });
+        }
+    }, [api, noti]);
 
     useEffect(() => {
         async function fetchData() {
@@ -84,10 +116,13 @@ export default function DataOverview() {
         },
     ];
     return (
-        <div className="wrapper-content">
-            <div className="current-parameter">
-                <Table dataSource={parameterData} columns={columns} />
+        <Context.Provider value={{ name: "User" }}>
+            {contextHolder}
+            <div className="wrapper-content">
+                <div className="current-parameter">
+                    <Table dataSource={parameterData} columns={columns} />
+                </div>
             </div>
-        </div>
+        </Context.Provider>
     );
 }
