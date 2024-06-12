@@ -1,5 +1,5 @@
 // import React from 'react'
-import { useRoutes, useNavigate } from "react-router-dom";
+import { useRoutes } from "react-router-dom";
 import MainLayout from "../layouts/MainLayout/MainLayout";
 import HomePage from "../pages/HomePage";
 import LoginLayout from "../layouts/LoginLayout/LoginLayout";
@@ -18,6 +18,8 @@ import OTPInputPage from "../pages/OTPInputPage/OTPInputPage";
 import ResetPassword from "../pages/ResetPassword/ResetPassword";
 // import { useEffect } from "react";
 import AdInformation from "../pages/AdInformation/AdInformation";
+import ManageIrrigation from "../pages/ManageIrrigation/ManageIrrigation";
+import Notification from "../pages/Notification/Notification";
 
 export default function RouteComponent() {
     // const navigate = useNavigate();
@@ -158,6 +160,22 @@ export default function RouteComponent() {
                 <LoginLayout>
                     <ResetPassword />
                 </LoginLayout>
+            ),
+        },
+        {
+            path: "/manage-irrigation",
+            element: (
+                <MainLayout>
+                    <ManageIrrigation />
+                </MainLayout>
+            ),
+        },
+        {
+            path: "/notification",
+            element: (
+                <MainLayout>
+                    <Notification />
+                </MainLayout>
             ),
         },
     ]);
