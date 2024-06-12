@@ -7,10 +7,12 @@ import Message from "../../components/Message";
 
 let client;
 
-const ManageIrrigation = () => {
+const UpdateManageIrrigation = () => {
+    const data = JSON.parse(localStorage.getItem("data"));
+
     const [form] = Form.useForm();
-    const [startTime, setStartTime] = useState("");
-    const [endTime, setEndTime] = useState("");
+    const [startTime, setStartTime] = useState(data.startTime);
+    const [endTime, setEndTime] = useState(data.stopTime);
 
     const onChangeStartTime = (_, timeString) => {
         setStartTime(timeString);
@@ -35,7 +37,7 @@ const ManageIrrigation = () => {
     const handleFinish = useCallback(
         (values) => {
             const data = {
-                action: "create",
+                action: "update",
                 id: parseInt(values.id),
                 cycle: values.cycle,
                 flow1: parseInt(values.flow1),
@@ -58,7 +60,7 @@ const ManageIrrigation = () => {
                 } else {
                     console.log("Message published successfully");
                     form.resetFields();
-                    Message.sendSuccess("Tạo mới thành công");
+                    Message.sendSuccess("Cập nhật thành công");
                 }
             });
         },
@@ -67,7 +69,7 @@ const ManageIrrigation = () => {
 
     return (
         <div className="wrapper-irrigation">
-            <h2>Thêm mới hoạt động tưới tiêu</h2>
+            <h2>Cập nhật hoạt động tưới tiêu</h2>
             <div className="manage-irrigation">
                 <Form
                     form={form}
@@ -80,6 +82,7 @@ const ManageIrrigation = () => {
                         <Form.Item
                             label="Tên hoạt động"
                             name="schedulerName"
+                            initialValue={data.schedulerName}
                             rules={[
                                 {
                                     required: true,
@@ -92,6 +95,7 @@ const ManageIrrigation = () => {
                         <Form.Item
                             label="ID"
                             name="id"
+                            initialValue={data.id}
                             rules={[
                                 {
                                     required: true,
@@ -99,11 +103,12 @@ const ManageIrrigation = () => {
                                 },
                             ]}
                         >
-                            <Input placeholder="ID" />
+                            <Input placeholder="ID" disabled />
                         </Form.Item>
                         <Form.Item
                             label="Vòng lặp"
                             name="cycle"
+                            initialValue={data.cycle}
                             rules={[
                                 {
                                     required: true,
@@ -118,6 +123,7 @@ const ManageIrrigation = () => {
                         <Form.Item
                             label="Dung dịch phân bể 1"
                             name="flow1"
+                            initialValue={data.flow1}
                             rules={[
                                 {
                                     required: true,
@@ -133,6 +139,7 @@ const ManageIrrigation = () => {
                         <Form.Item
                             label="Dung dịch phân bể 2"
                             name="flow2"
+                            initialValue={data.flow2}
                             rules={[
                                 {
                                     required: true,
@@ -148,6 +155,7 @@ const ManageIrrigation = () => {
                         <Form.Item
                             label="Dung dịch phân bể 3"
                             name="flow3"
+                            initialValue={data.flow3}
                             rules={[
                                 {
                                     required: true,
@@ -165,6 +173,7 @@ const ManageIrrigation = () => {
                         <Form.Item
                             label="Khu vực"
                             name="area"
+                            initialValue={data.area}
                             rules={[
                                 {
                                     required: true,
@@ -190,6 +199,7 @@ const ManageIrrigation = () => {
                                     message: "Vui lòng nhập lượng nước bơm vào",
                                 },
                             ]}
+                            initialValue={data.pumpIn}
                         >
                             <Input
                                 placeholder="Lượng nước bơm vào"
@@ -205,6 +215,7 @@ const ManageIrrigation = () => {
                                     message: "Vui lòng chọn thời gian bắt đầu",
                                 },
                             ]}
+                            initialValue={dayjs(data.startTime, "HH:mm:ss")}
                         >
                             <TimePicker
                                 defaultOpenValue={dayjs("00:00:00", "HH:mm:ss")}
@@ -217,6 +228,7 @@ const ManageIrrigation = () => {
                         <Form.Item
                             label="Thời gian kết thúc"
                             name="stopTime"
+                            initialValue={dayjs(data.stopTime, "HH:mm:ss")}
                             rules={[
                                 {
                                     required: true,
@@ -247,4 +259,4 @@ const ManageIrrigation = () => {
     );
 };
 
-export default ManageIrrigation;
+export default UpdateManageIrrigation;

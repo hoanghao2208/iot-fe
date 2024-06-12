@@ -12,6 +12,10 @@ export default function Header() {
 
                 <div className="items">
                     <Link className="" to="/manage-irrigation">
+                        Thêm mới tưới tiêu
+                    </Link>
+
+                    <Link className="" to="/manage-irrigation-list">
                         Quản lý tưới tiêu
                     </Link>
 

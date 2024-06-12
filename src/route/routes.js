@@ -20,6 +20,8 @@ import ResetPassword from "../pages/ResetPassword/ResetPassword";
 import AdInformation from "../pages/AdInformation/AdInformation";
 import ManageIrrigation from "../pages/ManageIrrigation/ManageIrrigation";
 import Notification from "../pages/Notification/Notification";
+import ManageIrrigationList from "../pages/ManageIrrigationList/ManageIrrigationList";
+import UpdateManageIrrigation from "../pages/UpdateManageIrrigation/UpdateManageIrrigation";
 
 export default function RouteComponent() {
     // const navigate = useNavigate();
@@ -175,6 +177,22 @@ export default function RouteComponent() {
             element: (
                 <MainLayout>
                     <Notification />
+                </MainLayout>
+            ),
+        },
+        {
+            path: "/manage-irrigation-list",
+            element: (
+                <MainLayout>
+                    <ManageIrrigationList />
+                </MainLayout>
+            ),
+        },
+        {
+            path: "/update-manage-irrigation",
+            element: (
+                <MainLayout>
+                    <UpdateManageIrrigation />
                 </MainLayout>
             ),
         },
