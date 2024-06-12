@@ -1,0 +1,22 @@
+.wrapper1 {
+    background-color: #ebecf0;
+
+    &-content {
+        width: 1200px;
+        margin: 0 auto;
+        &__title {
+            text-transform: uppercase;
+        }
+    }
+}
+.wrapper-content__title {
+    padding-top: 30px;
+    padding-bottom: 20px;
+    margin: 0 auto;
+}
+.wrapper-content {
+}
+
+.ant-switch.ant-switch-checked {
+    background: rgb(98, 197, 98) !important;
+}

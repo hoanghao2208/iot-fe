@@ -1,0 +1,10 @@
+.wrapper {
+    background-color: #fffdfd;
+    &-content {
+        width: 1200px;
+        margin: 0 auto;
+        &__title {
+            text-transform: uppercase;
+        }
+    }
+}

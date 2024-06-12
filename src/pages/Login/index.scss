@@ -1,0 +1,18 @@
+.wrapper {
+    &__navigate {
+        display: flex;
+        align-items: center;
+    }
+    &__to-register,
+    &__forgot {
+        span {
+            transition: all 0.2s linear;
+        }
+        span:hover {
+            color: #ff5f73;
+        }
+    }
+    &__forgot {
+        margin-left: 80px;
+    }
+}

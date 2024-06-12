@@ -1,0 +1,29 @@
+{
+    // See https://go.microsoft.com/fwlink/?LinkId=733558
+    // for the documentation about the tasks.json format
+    "version": "2.0.0",
+    "tasks": [
+        // {
+        //     "type": "npm",
+        //     "script": "build",
+        //     "group": {
+        //         "kind": "build",
+        //         "isDefault": true
+        //     },
+        //     "problemMatcher": [],
+        //     "label": "npm: build",
+        //     "detail": "react-scripts build"
+        // },
+        // {
+        //     "type": "npm",
+        //     "script": "start:build",
+        //     "label": "serve port 3000"
+        // },
+        // {
+        //     "label": "Build careme",
+        //     "type": "shell",
+        //     "command": "source ./scripts/build.sh",
+        //     "problemMatcher": []
+        // }
+    ]
+}

@@ -1,0 +1,71 @@
+@font-face {
+    font-family: 'Inter';
+    font-style: normal;
+    src: local('Inter Bold'), local('Inter-Bold'),
+        url('../assets/fonts/Inter/Inter-Bold.ttf') format('truetype');
+    font-display: swap;
+    font-weight: 700;
+}
+
+@font-face {
+    font-family: 'Inter';
+    font-style: normal;
+    src: local('Inter Regular'), local('Inter-Regular'),
+        url('../assets/fonts/Inter/Inter-Regular.ttf') format('truetype');
+    font-display: swap;
+    font-weight: 400;
+}
+
+@font-face {
+    font-family: 'Inter';
+    font-style: normal;
+    src: local('Inter Medium'), local('Inter-Medium'),
+        url('../assets/fonts/Inter/Inter-Medium.ttf') format('truetype');
+    font-display: swap;
+    font-weight: 500;
+}
+
+@font-face {
+    font-family: 'Inter';
+    font-style: normal;
+    src: local('Inter SemiBold'), local('Inter-SemiBold'),
+        url('../assets/fonts/Inter/Inter-SemiBold.ttf') format('truetype');
+    font-display: swap;
+    font-weight: 600;
+}
+
+@font-face {
+    font-family: 'Inter';
+    font-style: normal;
+    src: local('Inter Light'), local('Inter-Light'),
+        url('../assets/fonts/Inter/Inter-Light.ttf') format('truetype');
+    font-display: swap;
+    font-weight: 300;
+}
+
+$font-regular: 'Inter-regular';
+$font-semibold: 'Inter-semibold';
+$font-bold: 'Inter-bold';
+$font-light: 'Inter-light';
+$font-medium: 'Inter-medium';
+$font-inter: 'Inter';
+
+@mixin fontLight {
+    font-weight: 300;
+}
+
+@mixin fontRegular {
+    font-weight: 400;
+}
+
+@mixin fontMedium {
+    font-weight: 500;
+}
+
+@mixin fontSemibold {
+    font-weight: 600;
+}
+
+@mixin fontBold {
+    font-weight: 700;
+}

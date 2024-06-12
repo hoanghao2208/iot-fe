@@ -1,0 +1,49 @@
+// light color
+$color--light: #ffffff;
+
+// black color
+$color--black: #000;
+
+// background color
+$color--black_6: rgba(
+    $color: $color--black,
+    $alpha: 0.06,
+);
+
+// text color
+
+$color--text1: #111111;
+
+$color--text2: #555555;
+
+$color--text3: #969696;
+
+$color--text-mid: #d9dbe1;
+
+$color--text-disabled: #868686;
+
+$color--primary: #212460;
+
+// border color
+$color--border: #e2e2e2;
+$color--line: #d9d9d9;
+
+// warning color
+$color--red: #ff5f73;
+
+// button color
+$color-button--green: #34ab71;
+$color-button--green-hover: #29946f;
+$color-button--green-disabled: #c8e8d8;
+
+// status color
+$color-status--configuring: #eeeeee;
+$color-status--deploying: #ff885c;
+$color-status--deployed: #34ab71;
+
+// modal color
+$color-modal--header-bg: #2c2c2c;
+
+// button
+$color-button--primary: #1890ff;
+$color-button--primary-hover: #2a2e7b;

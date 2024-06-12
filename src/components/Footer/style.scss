@@ -1,0 +1,119 @@
+.farm {
+    color: #2fb95d;
+}
+.cng-nhau-xy,
+.iotfar1 {
+    align-self: stretch;
+    position: relative;
+    line-height: 48px;
+}
+.cng-nhau-xy {
+    font-size: 16px;
+    line-height: 24px;
+    color: #18191f;
+}
+.iotfarm-parent {
+    align-self: stretch;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    gap: 16px;
+}
+.ig-icon {
+    position: relative;
+    width: 24px;
+    height: 24px;
+}
+.ecosculpt,
+.ig,
+.sosmed {
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+}
+.ecosculpt,
+.sosmed {
+    gap: 32px;
+}
+.sosmed {
+    align-self: stretch;
+    flex-direction: row;
+}
+.ecosculpt {
+    width: 271px;
+    flex-direction: column;
+    font-size: 42px;
+    color: #585858;
+}
+.lin-kt {
+    position: relative;
+    line-height: 24px;
+}
+.trang-ch {
+    font-size: 15.5px;
+}
+.dch-v,
+.trang-ch {
+    align-self: stretch;
+    position: relative;
+    line-height: 24px;
+}
+.quick-links,
+.tx {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+}
+.tx {
+    align-self: stretch;
+    gap: 16px;
+    font-size: 16px;
+}
+.quick-links {
+    gap: 40px;
+}
+
+.email,
+.email-parent,
+.footer,
+.tx1 {
+    display: flex;
+    justify-content: flex-start;
+}
+.email {
+    width: 293px;
+    flex-direction: row;
+    align-items: center;
+    gap: 8px;
+}
+.email-parent,
+.footer,
+.tx1 {
+    flex-direction: column;
+    align-items: flex-start;
+}
+.email-parent {
+    gap: 16px;
+}
+.footer,
+.tx1 {
+    font-size: 16px;
+}
+.footer {
+    background-color: #fff;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 31px 98px 96px;
+    box-sizing: border-box;
+    text-align: left;
+    font-size: 21px;
+    color: #18191f;
+    font-family: Inter;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding-bottom: 10px;
+    padding-left: 0;
+    padding-right: 0;
+}

@@ -1,0 +1,38 @@
+.container-StatisticalPage {
+  background-color: #ebecf0;
+}
+
+.wrapper-content {
+  width: 1200px;
+  margin: 0 auto;
+}
+
+.current-chart {
+  font-size: 18px;
+  font-weight: 400;
+}
+
+.current-parameter-views {
+  background-color: #ffffff;
+}
+
+.parameter-views-detail {
+  display: flex;
+  justify-content: flex-start;
+  flex-direction: row;
+  align-items: center;
+  gap: 8px;
+  padding-left: 20px;
+}
+
+.parameter-views-detail p {
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 20px;
+}
+.current-chart {
+  padding-top: 20px;
+  padding-bottom: 20px;
+  text-align: center;
+}
