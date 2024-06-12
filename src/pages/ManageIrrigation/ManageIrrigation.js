@@ -1,27 +1,67 @@
 import { Button, Form, Input, InputNumber, Select, TimePicker } from "antd";
 import "./style.scss";
 import dayjs from "dayjs";
-import { useCallback, useEffect } from "react";
+import { useCallback, useEffect, useState } from "react";
 import mqtt from "mqtt";
+import Message from "../../components/Message";
+
+let client;
 
 const ManageIrrigation = () => {
     const [form] = Form.useForm();
+    const [startTime, setStartTime] = useState("");
+    const [endTime, setEndTime] = useState("");
 
-    // useEffect(() => {
-//     const client = mqtt.connect("wss://io.adafruit.com", {
-    //         port: 1883,
-    //         username: "hoanghao2208",
-    //         password: "aio_rHIW21J3GmhULhzenYe0gZlTmbCc",
-    //     });
+    const onChangeStartTime = (_, timeString) => {
+        setStartTime(timeString);
+    };
 
-    //     client.on("connect", () => {
-    //         console.log("Connected to Adafruit IO");
-    //     });
-    // }, []);
+    const onChangeEndTime = (_, timeString) => {
+        setEndTime(timeString);
+    };
 
-    const handleFinish = useCallback((values) => {
-        console.log("handleFinish", values);
+    useEffect(() => {
+        client = mqtt.connect("wss://io.adafruit.com", {
+            port: 443,
+            username: "minhpham51",
+            password: "aio_EkSE203XLYsi8LMpVKyRomhKN7Mr",
+        });
+
+        client.on("connect", () => {
+            console.log("Connected to Adafruit IO");
+        });
     }, []);
+
+    const handleFinish = useCallback(
+        (values) => {
+            const data = {
+                action: "create",
+                id: parseInt(values.id),
+                cycle: values.cycle,
+                flow1: parseInt(values.flow1),
+                flow2: parseInt(values.flow2),
+                flow3: parseInt(values.flow3),
+                pumpIn: parseInt(values.pumpIn),
+                area: parseInt(values.area),
+                isActive: 1,
+                schedulerName: values.schedulerName,
+                startTime,
+                stopTime: endTime,
+            };
+
+            const message = JSON.stringify(data);
+            client.publish("minhpham51/feeds/irrigation", message, (error) => {
+                if (error) {
+                    console.error("Publish error: ", error);
+                } else {
+                    console.log("Message published successfully");
+                    form.resetFields();
+                    Message.sendSuccess("Tạo mới thành công");
+                }
+            });
+        },
+        [endTime, form, startTime]
+    );
 
     return (
         <div className="wrapper-irrigation">
@@ -35,25 +75,6 @@ const ManageIrrigation = () => {
                     autoComplete="off"
                 >
                     <div className="manage-irrigation--row">
-                        {/* <Form.Item
-                            label="Hành động"
-                            name="action"
-                            rules={[
-                                {
-                                    required: true,
-                                    message: "Vui lòng chọn hành động",
-                                },
-                            ]}
-                        >
-                            <Select
-                                placeholder="Hành động"
-                                options={[
-                                    { value: "create", label: "Tạo mới" },
-                                    { value: "update", label: "Cập nhật" },
-                                    { value: "delete", label: "Xóa" },
-                                ]}
-                            />
-                        </Form.Item> */}
                         <Form.Item
                             label="Tên hoạt động"
                             name="schedulerName"
@@ -186,6 +207,7 @@ const ManageIrrigation = () => {
                             <TimePicker
                                 defaultOpenValue={dayjs("00:00:00", "HH:mm:ss")}
                                 placeholder="Thời gian bắt đầu"
+                                onChange={onChangeStartTime}
                             />
                         </Form.Item>
                     </div>
@@ -203,6 +225,7 @@ const ManageIrrigation = () => {
                             <TimePicker
                                 defaultOpenValue={dayjs("00:00:00", "HH:mm:ss")}
                                 placeholder="Thời gian kết thúc"
+                                onChange={onChangeEndTime}
                             />
                         </Form.Item>
                     </div>
